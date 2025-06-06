@@ -1,0 +1,16 @@
+Dépendances
+Python 3.8+
+
+Pandas
+
+Numpy
+
+Streamlit
+
+Scikit-learn
+
+Requests
+
+Pillow
+
+(optionnel) Jupyter, BeautifulSoup4, etc. pour les notebooks
