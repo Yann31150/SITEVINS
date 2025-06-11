@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import requests
 from io import BytesIO
+import pandas as pd
 
 def afficher_badge_bio():
     st.markdown(
@@ -48,7 +49,9 @@ def afficher_infos_vin(vin, show_recommendations=False, df=None):
         st.write(f"**Accords mets et vins:** {accords}")
     if pd.notna(vin['desc']) and vin['desc'] != 'nan':
         st.write(f"**Description:** {vin['desc']}")
-    if not show_recommendations and df is not None:
+    
+    # Bouton toujours actif, même en mode recommandation
+    if df is not None:
         if st.button(f"Voir les recommandations pour {vin['nom']}", key=f"reco_{vin['nom']}"):
             st.session_state.selected_wine = vin
             st.session_state.show_recommendations = True
@@ -56,15 +59,31 @@ def afficher_infos_vin(vin, show_recommendations=False, df=None):
             st.rerun()
 
 def afficher_recommandations(selected_wine, df):
+    # Bouton de retour en haut à droite
+    col1, col2 = st.columns([6, 1])
+    with col2:
+        st.markdown("##")  # Espace pour l'alignement vertical
+        if st.button("⬅️ Retour aux résultats", use_container_width=True):
+            st.session_state.show_recommendations = False
+            st.rerun()
+
     st.markdown("### 🍷 Vins recommandés")
-    col1, col2 = st.columns(2)
-    for i in range(1, 5):
-        reco_col = 'reco' + str(i)
-        if reco_col in df.columns and pd.notna(selected_wine[reco_col]):
-            reco_wine = df[df['nom'] == selected_wine[reco_col]].iloc[0]
-            with col1 if i % 2 == 1 else col2:
+
+    # Affichage des recommandations 2 par 2
+    for i in range(1, 5, 2):  # i = 1, 3
+        reco_col1 = f'reco{i}'
+        reco_col2 = f'reco{i+1}'
+
+        col1, col2 = st.columns(2)
+
+        if reco_col1 in df.columns and pd.notna(selected_wine[reco_col1]):
+            reco_wine_1 = df[df['nom'] == selected_wine[reco_col1]].iloc[0]
+            with col1:
                 st.markdown("---")
-                afficher_infos_vin(reco_wine, show_recommendations=True, df=df)
-    if st.button("Retour aux résultats"):
-        st.session_state.show_recommendations = False
-        st.rerun()
+                afficher_infos_vin(reco_wine_1, show_recommendations=True, df=df)
+
+        if reco_col2 in df.columns and pd.notna(selected_wine[reco_col2]):
+            reco_wine_2 = df[df['nom'] == selected_wine[reco_col2]].iloc[0]
+            with col2:
+                st.markdown("---")
+                afficher_infos_vin(reco_wine_2, show_recommendations=True, df=df)
