@@ -54,8 +54,8 @@ def afficher_infos_vin(vin, show_recommendations=False, df=None):
     if df is not None:
         if st.button(f"Voir les recommandations pour {vin['nom']}", key=f"reco_{vin['nom']}"):
             st.session_state.selected_wine = vin
-            st.session_state.show_recommendations = True
-            st.session_state.df = df
+            st.session_state.page = "Recommandation"
+            st.write("Debug: Changement de page vers Recommandation")  # Message de débogage
             st.rerun()
 
 def afficher_recommandations(selected_wine, df):

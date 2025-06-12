@@ -7,14 +7,10 @@ def page_resultats(df):
     
     if 'resultats' in st.session_state and not st.session_state.resultats.empty:
         resultats = st.session_state.resultats
-        
-        if st.session_state.get('show_recommendations', False):
-            afficher_recommandations(st.session_state.selected_wine, df)
-        else:
-            st.write(f"Nombre de vins trouvés : {len(resultats)}")
-            for _, vin in resultats.iterrows():
-                st.markdown("---")
-                afficher_infos_vin(vin, df=df)
+        st.write(f"Nombre de vins trouvés : {len(resultats)}")
+        for _, vin in resultats.iterrows():
+            st.markdown("---")
+            afficher_infos_vin(vin, df=df)
     else:
         st.info("Aucun résultat à afficher. Veuillez effectuer une recherche.")
         if st.button("Retour à la recherche"):

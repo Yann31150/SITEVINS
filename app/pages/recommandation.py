@@ -10,6 +10,12 @@ def page_recommandation(df):
     if selected_wine is not None:
         # Afficher les recommandations associées à ce vin
         afficher_recommandations(selected_wine, df)
+        
+        # Bouton pour revenir aux résultats
+        if st.button("Retour aux résultats"):
+            st.session_state.page = "Résultats"
+            st.session_state.show_recommendations = False
+            st.rerun()
     else:
         st.info("Veuillez d'abord sélectionner un vin depuis les résultats de recherche pour afficher ses recommandations.")
         if st.button("Retour à la recherche"):
