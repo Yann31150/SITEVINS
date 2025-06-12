@@ -1,6 +1,6 @@
 import pandas as pd
 
-def charger_donnees(fichier_csv="base_vin_final.csv"):
+def charger_donnees(fichier_csv="../data/final/base_vin_final.csv"):
     """Charge les données des vins depuis un CSV et les prépare."""
     df = pd.read_csv(fichier_csv)
     df['bio'] = df['bio'].apply(lambda x: 1 if pd.notna(x) and 'Certifié Eurofeuille' in str(x) else 0)
