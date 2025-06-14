@@ -6,8 +6,24 @@ from pages.filtrage import page_recherche
 from pages.resultats import page_resultats
 from pages.recommandation import page_recommandation
 
+# Configuration de la page
+st.set_page_config(
+    page_title="BouteillIA",
+    page_icon="🍷",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Masquer le menu hamburger et le footer
+st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stDeployButton {display:none;}
+    </style>
+""", unsafe_allow_html=True)
+
 def main():
-    st.set_page_config(page_title="BouteillIA", page_icon="🍷", layout="wide")
     injecter_css()
     df = charger_donnees()
     if "page" not in st.session_state:
@@ -23,13 +39,14 @@ def main():
         if st.session_state["page"] != page:
             st.session_state.page = page
 
-    if page == "Présentation et KPI":
+    # Affichage de la page correspondante
+    if st.session_state.page == "Présentation et KPI":
         page_presentation(df)
-    elif page == "Filtrage des vins":
+    elif st.session_state.page == "Filtrage des vins":
         page_recherche(df)
-    elif page == "Résultats":
+    elif st.session_state.page == "Résultats":
         page_resultats(df)
-    elif page == "Recommandation":
+    elif st.session_state.page == "Recommandation":
         page_recommandation(df)
 
     # Pour gérer redirection automatique après recherche
