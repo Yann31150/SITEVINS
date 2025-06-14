@@ -3,7 +3,6 @@ import streamlit as st
 def page_presentation(df):
     st.title("🍷 BouteillIA")
     st.subheader("Bienvenue")
-    
     st.markdown("""
     <div class="logo-container">
         <img src="chemin_vers_votre_logo.png" alt="Logo Viticulture" style="max-width: 300px;">
