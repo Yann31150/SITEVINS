@@ -30,7 +30,7 @@ def main():
         st.session_state["page"] = "Présentation et KPI"
     with st.sidebar:
         st.title("🍷 Navigation")
-        st.image("images/logo.png")
+        st.image("app/images/logo.png")
         page = st.radio(
             "Choisissez une page",
             ["Présentation et KPI", "Filtrage des vins", "Résultats", "Recommandation"],
