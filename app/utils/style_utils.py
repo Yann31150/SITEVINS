@@ -3,6 +3,9 @@ import streamlit as st
 def injecter_css():
     st.markdown("""
     <style>
+        [data-testid=stSidebarNav] {
+            display:none;
+        }
         /* Variables de couleurs */
         :root {
             --wine-red: #722F37;

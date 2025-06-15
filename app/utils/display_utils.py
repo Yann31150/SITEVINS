@@ -65,6 +65,7 @@ def afficher_recommandations(selected_wine, df):
         st.markdown("##")  # Espace pour l'alignement vertical
         if st.button("⬅️ Retour aux résultats", use_container_width=True):
             st.session_state.show_recommendations = False
+            st.session_state.page = "Résultats"
             st.rerun()
 
     st.markdown("### 🍷 Vins recommandés")
