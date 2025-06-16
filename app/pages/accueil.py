@@ -5,7 +5,7 @@ def page_presentation(df):
     st.subheader("Bienvenue")
     st.markdown("""
     <div class="logo-container">
-        <img src="chemin_vers_votre_logo.png" alt="Logo Viticulture" style="max-width: 300px;">
+        <img src="app/images/imagecentre.png" alt="Logo Viticulture" style="max-width: 300px;">
     </div>
     """, unsafe_allow_html=True)
     
