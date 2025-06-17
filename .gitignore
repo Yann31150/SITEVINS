@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Environnements virtuels
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter Notebooks
+*.ipynb_checkpoints
+
+# Données volumineuses ou sensibles
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.parquet
+*.h5
+*.db
+*.sqlite3
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Dossiers spécifiques à l'utilisateur
+.idea/
+.vscode/
+
+# Streamlit
+.streamlit/
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Exclure les données du projet mais garder les scripts
+!app/base_vin_final.csv
+!app/images/
+!app/pages/
+!app/utils/
+!archive/
+!data/process/*.ipynb
+!data/final/*.ipynb 

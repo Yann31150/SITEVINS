@@ -26,23 +26,24 @@ st.markdown("""
 def main():
     injecter_css()
     df = charger_donnees()
-    if "page" not in st.session_state:
-        st.session_state["page"] = "Présentation et KPI"
+    pages = ["Accueil", "Votre choix", "Résultats", "Recommandation"]
+    if "page" not in st.session_state or st.session_state["page"] not in pages:
+        st.session_state["page"] = "Accueil"
     with st.sidebar:
         st.title("🍷 Navigation")
         st.image("app/images/logo.png")
         page = st.radio(
             "Choisissez une page",
-            ["Présentation et KPI", "Filtrage des vins", "Résultats", "Recommandation"],
-            index=["Présentation et KPI", "Filtrage des vins", "Résultats", "Recommandation"].index(st.session_state["page"])
+            pages,
+            index=pages.index(st.session_state["page"])
         )
         if st.session_state["page"] != page:
             st.session_state.page = page
 
     # Affichage de la page correspondante
-    if st.session_state.page == "Présentation et KPI":
+    if st.session_state.page == "Accueil":
         page_presentation(df)
-    elif st.session_state.page == "Filtrage des vins":
+    elif st.session_state.page == "Votre choix":
         page_recherche(df)
     elif st.session_state.page == "Résultats":
         page_resultats(df)
