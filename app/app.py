@@ -1,10 +1,16 @@
 import streamlit as st
-from app.utils.style_utils import injecter_css
-from app.utils.data_utils import charger_donnees
-from app.pages.accueil import page_presentation
-from app.pages.filtrage import page_recherche
-from app.pages.resultats import page_resultats
-from app.pages.recommandation import page_recommandation
+import sys
+import os
+
+# Ajouter le répertoire parent au PYTHONPATH
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from utils.style_utils import injecter_css
+from utils.data_utils import charger_donnees
+from pages.accueil import page_presentation
+from pages.filtrage import page_recherche
+from pages.resultats import page_resultats
+from pages.recommandation import page_recommandation
 
 # Configuration de la page
 st.set_page_config(
