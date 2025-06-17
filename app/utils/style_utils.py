@@ -28,18 +28,18 @@ def injecter_css():
 
         /* Style de la sidebar */
         section[data-testid="stSidebar"] {
-            background-color: var(--wine-burgundy);
+            background-color: #FFFFFF;
         }
         section[data-testid="stSidebar"] .stRadio > div {
-            color: var(--wine-cream) !important;
+            color: var(--wine-burgundy) !important;
         }
         section[data-testid="stSidebar"] .stRadio > div > div {
-            color: var(--wine-cream) !important;
+            color: var(--wine-burgundy) !important;
         }
         section[data-testid="stSidebar"] h1, 
         section[data-testid="stSidebar"] h2, 
         section[data-testid="stSidebar"] h3 {
-            color: var(--wine-cream) !important;
+            color: var(--wine-burgundy) !important;
         }
 
         /* Style des titres */
@@ -106,6 +106,18 @@ def injecter_css():
 
         /* Style des métriques */
         .stMetric {
+            color: #333333 !important;
+        }
+        .stMetric > div {
+            color: #333333 !important;
+        }
+        .stMetric > div > div {
+            color: #333333 !important;
+        }
+        .stMetric > div > div > div {
+            color: #333333 !important;
+        }
+        .stMetric > div > div > div > div {
             color: #333333 !important;
         }
 
