@@ -1,97 +1,142 @@
 # BouteillIA — Plateforme de recommandation de vins
 
-Bienvenue sur **BouteillIA**, un projet data science et web qui propose une expérience de découverte et de recommandation de vins, de la récupération des données jusqu’à la recommandation par intelligence artificielle.
+Bienvenue sur **BouteillIA**, une application web de data science dédiée à la découverte, l'exploration et la recommandation intelligente de vins.
 
 ---
 
 ## Table des matières
 
 - [Présentation du projet](#présentation-du-projet)
+- [Fonctionnalités principales](#fonctionnalités-principales)
 - [Arborescence du projet](#arborescence-du-projet)
 - [Pipeline de données](#pipeline-de-données)
 - [Lancement de l'application web](#lancement-de-lapplication-web)
 - [Dépendances](#dépendances)
 - [Contribuer](#contribuer)
-- [Auteurs](#auteurs)
 
 ---
 
 ## Présentation du projet
 
-**BouteillIA** a pour objectif de :
-- Scraper et centraliser une base de données de vins,
-- Nettoyer et enrichir les données pour l'analyse,
-- Appliquer des modèles de machine learning pour la recommandation,
-- Offrir une interface web intuitive permettant d’explorer, filtrer et obtenir des suggestions de vins.
+**BouteillIA** vise à offrir une expérience complète autour du vin :
+- Collecte et centralisation de données sur des milliers de vins (scraping, enrichissement),
+- Nettoyage, structuration et préparation des données pour l'analyse et la recommandation,
+- Application de modèles de machine learning pour suggérer des vins adaptés aux goûts et critères de l'utilisateur,
+- Interface web moderne, responsive et intuitive pour explorer, filtrer, visualiser et obtenir des recommandations personnalisées.
+
+---
+
+## Fonctionnalités principales
+
+- **Accueil & KPI** :
+  - Statistiques clés sur le marché du vin (bio, consommation, etc.)
+  - Visualisations interactives : top pays producteurs de vin bio, répartition des couleurs, types de produits…
+- **Filtrage avancé** :
+  - Recherche multi-critères (nom, pays, couleur, prix, accords mets-vins, bio…)
+  - Sélection dynamique des fourchettes de prix et des accords
+- **Résultats détaillés** :
+  - Affichage des vins correspondant à la recherche, avec visuels, infos détaillées, badges bio
+  - Accès rapide aux recommandations personnalisées pour chaque vin
+- **Recommandation IA** :
+  - Suggestions de vins similaires ou complémentaires, basées sur l'analyse des profils et des préférences
+- **Design responsive** :
+  - Expérience optimisée pour desktop et mobile (graphiques adaptés, navigation fluide)
 
 ---
 
 ## Arborescence du projet
 
-/ton_projet_viticulture/
-│
-├── data/
-│ ├── raw/
-│ │ ├── scraping_wines.ipynb
-│ │ └── vins_bruts_150pages.csv
-│ ├── processed/
-│ │ ├── flattening.ipynb
-│ │ ├── vins_aplatis.csv
-│ │ ├── cleaning_ml.ipynb
-│ │ └── vins_ml_ready.csv
-│ └── final/
-│ ├── ml_model.ipynb
-│ └── base_vin_final.csv
-│
+```
+SITEVINS/
 ├── app/
-│ ├── app.py
-│ ├── utils/
-│ │ ├── init.py
-│ │ ├── data_utils.py
-│ │ ├── display_utils.py
-│ │ └── style_utils.py
-│ └── pages/
-│ ├── init.py
-│ ├── accueil.py
-│ ├── filtrage.py
-│ ├── resultats.py
-│ └── recommandation.py
-│
-├── requirements.txt
-├── README.md
-└── .gitignore
+│   ├── app.py
+│   ├── images/
+│   │   ├── logo.png
+│   │   └── imagecentre.png
+│   ├── pages/
+│   │   ├── accueil.py
+│   │   ├── filtrage.py
+│   │   ├── resultats.py
+│   │   └── recommandation.py
+│   └── utils/
+│       ├── data_utils.py
+│       ├── display_utils.py
+│       ├── style_utils.py
+│       └── visualisation.py
+├── data/
+│   ├── raw/
+│   │   ├── scrapping.ipynb
+│   │   └── vins_vinatis_150_pages.csv
+│   ├── process/
+│   │   ├── etape_1_pour_applatir.ipynb
+│   │   ├── etape_2_travail_sur_base.ipynb
+│   │   └── vins_vinatis_flat_complet.csv
+│   └── final/
+│       ├── etape_3_ML_sur_base_vin_av_poids.ipynb
+│       └── base_vin_final.csv
+├── archive/
+│   └── ... (versions précédentes, scripts historiques)
+├── requirement.txt
+├── .gitignore
+└── README.md
+```
 
 ---
 
 ## Pipeline de données
 
-Le projet suit plusieurs étapes, **du scraping au site web** :
-
 1. **Scraping**
-    - `data/raw/scraping_wines.ipynb` : Notebook qui collecte les informations des vins sur les sites marchands et les sauvegarde dans `vins_bruts_150pages.csv`.
-
-2. **Aplatissement**
-    - `data/processed/flattening.ipynb` : Nettoie les colonnes complexes et génère `vins_aplatis.csv`.
-
-3. **Nettoyage et préparation ML**
-    - `data/processed/cleaning_ml.ipynb` : Met en forme les données pour le machine learning (`vins_ml_ready.csv`).
-
-4. **Machine Learning / Enrichissement**
-    - `data/final/ml_model.ipynb` : Modélisation, enrichissement et recommandations. Génère le fichier `base_vin_final.csv` utilisé par le site.
-
-5. **Application Streamlit**
-    - Le fichier final est utilisé par le site web : interface de filtrage, recherche, affichage détaillé et recommandations.
+    - `data/raw/scrapping.ipynb` : collecte des données sur les vins (site Vinatis, etc.)
+2. **Préparation & nettoyage**
+    - `data/process/etape_1_pour_applatir.ipynb`, `etape_2_travail_sur_base.ipynb` : nettoyage, aplatissement, enrichissement
+3. **Machine Learning & enrichissement**
+    - `data/final/etape_3_ML_sur_base_vin_av_poids.ipynb` : modélisation, scoring, génération de la base finale
+4. **Application web**
+    - Utilisation de `data/final/base_vin_final.csv` pour alimenter l'interface Streamlit
 
 ---
 
-## Lancement de l’application web
+## Lancement de l'application web
 
-1. **Installation des dépendances**
+1. **Installer les dépendances**
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
+```
 
+2. **Lancer l'application**
 
-#Lancement de l’application
-cd app
-streamlit run app.py
+```bash
+python -m streamlit run app/app.py
+```
+
+3. **Accéder à l'interface**
+
+Ouvrez votre navigateur à l'adresse indiquée (par défaut http://localhost:8501)
+
+---
+
+## Dépendances principales
+
+- pandas
+- numpy
+- streamlit
+- scikit-learn
+- requests
+- Pillow
+- jupyter
+- beautifulsoup4
+- matplotlib, seaborn (visualisation)
+
+---
+
+## Contribuer
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request pour proposer des améliorations, corriger des bugs ou enrichir la base de données.
+
+---
+
+## Auteurs
+
+- Projet initié et développé par l'équipe BouteillIA.
+- Contact : Yann, Jean & Michel 
