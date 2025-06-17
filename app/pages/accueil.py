@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.visualisation import plot_bio_by_country, plot_couleurs_et_type, plot_bio_vs_total_pays
+from app.utils.visualisation import plot_bio_by_country, plot_couleurs_et_type, plot_bio_vs_total_pays
 
 def page_presentation(df):
     st.title("🍷 BouteillIA")
