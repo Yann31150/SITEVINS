@@ -72,16 +72,17 @@ def injecter_css():
 
         /* Style des boutons */
         .stButton > button {
-            background-color: var(--wine-red);
-            color: var(--wine-cream);
-            border: none;
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+            border: 2px solid var(--wine-red) !important;
             padding: 10px 20px;
             border-radius: 5px;
             font-weight: bold;
         }
         .stButton > button:hover {
-            background-color: var(--wine-burgundy);
-            color: var(--wine-cream);
+            background-color: var(--wine-red) !important;
+            color: #FFFFFF !important;
+            border: 2px solid var(--wine-red) !important;
         }
 
         /* Style des conteneurs */
