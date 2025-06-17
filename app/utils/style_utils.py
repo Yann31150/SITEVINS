@@ -14,6 +14,11 @@ def injecter_css():
             --wine-cream: #F2E8DC;
         }
 
+        /* Style général de l'application */
+        .stApp {
+            background-color: #FFFFFF;
+        }
+
         /* Masquer les éléments Streamlit par défaut */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
@@ -22,14 +27,13 @@ def injecter_css():
         .stApp > footer {background-color: transparent;}
 
         /* Style de la sidebar */
-        .sidebar .sidebar-content {
+        .css-1d391kg {
             background-color: var(--wine-burgundy);
+        }
+        .css-1d391kg .stRadio > div {
             color: var(--wine-cream);
         }
-        .sidebar .sidebar-content .stRadio > div {
-            color: var(--wine-cream);
-        }
-        .sidebar .sidebar-content .stRadio > div > div {
+        .css-1d391kg .stRadio > div > div {
             color: var(--wine-cream);
         }
 
@@ -55,7 +59,7 @@ def injecter_css():
 
         /* Style du texte principal */
         .main-text { 
-            color: #333; 
+            color: #333333; 
             font-size: 18px; 
             line-height: 1.6; 
             margin: 20px 0;
@@ -88,6 +92,21 @@ def injecter_css():
             border-radius: 10px;
             margin: 10px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Style du texte dans les conteneurs */
+        div[data-testid="stMarkdownContainer"] {
+            color: #333333;
+        }
+
+        /* Style des métriques */
+        .stMetric {
+            color: #333333;
+        }
+
+        /* Style des conteneurs de texte */
+        .stMarkdown {
+            color: #333333;
         }
     </style>
     """, unsafe_allow_html=True)
