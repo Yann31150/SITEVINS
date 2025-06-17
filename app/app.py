@@ -70,6 +70,8 @@ else:
 # Affiche la liste des 10 premiers fichiers extraits
 st.write("Fichiers extraits :", os.listdir(extract_path)[:10])
 
+st.image("public/images/00001.png")
+
 def main():
     injecter_css()
     df = charger_donnees()

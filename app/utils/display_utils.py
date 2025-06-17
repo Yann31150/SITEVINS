@@ -23,6 +23,10 @@ def charger_image_vin(nom_fichier):
             return None
 
 def afficher_infos_vin(vin, show_recommendations=False, df=None):
+    st.write(f"Nom image demandé : {vin['visuel']}")
+    chemin_image = os.path.join('public', 'images', vin['visuel'])
+    st.write(f"Chemin image cherché : {chemin_image}")
+    st.write(f"Existe ? {os.path.exists(chemin_image)}")
     if pd.notna(vin['visuel']) and vin['visuel'] != 'nan':
         image = charger_image_vin(vin['visuel'])
         if image:
