@@ -50,7 +50,7 @@ def download_file_from_google_drive(id, destination):
 
 # Chemin où tu veux extraire les images
 extract_path = "public/images"
-zip_path = "public/images.zip"
+zip_path = "public/images/images.zip"
 google_drive_id = "1EQQmNfHT9TdBqhBBcdv3T0Mb6FubXa9d"  # Ton ID Google Drive
 
 # Télécharge et décompresse si ce n'est pas déjà fait
