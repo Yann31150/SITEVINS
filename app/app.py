@@ -1,6 +1,8 @@
 import streamlit as st
 import sys
 import os
+import zipfile
+import requests
 
 # Ajouter le répertoire parent au PYTHONPATH
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -28,6 +30,37 @@ st.markdown("""
         .stDeployButton {display:none;}
     </style>
 """, unsafe_allow_html=True)
+
+def download_file_from_google_drive(id, destination):
+    URL = "https://drive.google.com/uc?export=download"
+    session = requests.Session()
+    response = session.get(URL, params={'id': id}, stream=True)
+    token = None
+    for key, value in response.cookies.items():
+        if key.startswith('download_warning'):
+            token = value
+    if token:
+        params = {'id': id, 'confirm': token}
+        response = session.get(URL, params=params, stream=True)
+    CHUNK_SIZE = 32768
+    with open(destination, "wb") as f:
+        for chunk in response.iter_content(CHUNK_SIZE):
+            if chunk:
+                f.write(chunk)
+
+# Chemin où tu veux extraire les images
+extract_path = "public/images"
+zip_path = "public/images.zip"
+google_drive_id = "1EQQmNfHT9TdBqhBBcdv3T0Mb6FubXa9d"  # Ton ID Google Drive
+
+# Télécharge et décompresse si ce n'est pas déjà fait
+if not os.path.exists(extract_path):
+    os.makedirs(extract_path, exist_ok=True)
+if not os.path.exists(os.path.join(extract_path, "00001.png")):
+    if not os.path.exists(zip_path):
+        download_file_from_google_drive(google_drive_id, zip_path)
+    with zipfile.ZipFile(zip_path, "r") as zip_ref:
+        zip_ref.extractall(extract_path)
 
 def main():
     injecter_css()
