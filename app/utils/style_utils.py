@@ -85,6 +85,19 @@ def injecter_css():
             border: 2px solid var(--wine-red) !important;
         }
 
+        /* Style spécifique pour le bouton Explorer les vins */
+        div[data-testid="stButton"] button[key="go_filtrage"] {
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+            border: 2px solid var(--wine-red) !important;
+            font-size: 1.2em !important;
+            padding: 15px 30px !important;
+        }
+        div[data-testid="stButton"] button[key="go_filtrage"]:hover {
+            background-color: var(--wine-red) !important;
+            color: #FFFFFF !important;
+        }
+
         /* Style des sélecteurs */
         .stSelectbox > div > div {
             background-color: #FFFFFF !important;
