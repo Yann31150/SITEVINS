@@ -13,11 +13,10 @@ def charger_donnees():
         
         # Gestion des visuels
         if 'visuel' not in df.columns:
-            df['visuel'] = "https://www.vinatis.com/1-detail_default/default-wine.png"
+            df['visuel'] = "default.png"
         else:
-            df['visuel'] = df['visuel'].apply(
-                lambda x: f"https://www.vinatis.com/{x}" if pd.notna(x) and not str(x).startswith('http') else x
-            )
+            # On ne garde que le nom de fichier (ex: 00001.png)
+            df['visuel'] = df['visuel'].apply(lambda x: str(x).split('/')[-1] if pd.notna(x) and x != 'nan' else 'default.png')
         
         # Conversion des types
         for col in df.columns:

@@ -3,6 +3,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 import pandas as pd
+import os
 
 def afficher_badge_bio():
     st.markdown(
@@ -10,26 +11,20 @@ def afficher_badge_bio():
         unsafe_allow_html=True
     )
 
-def charger_image_depuis_url(url):
-    try:
-        if pd.isna(url) or url == 'nan':
-            return None
-        url = url.strip()
-        if not url.startswith('http'):
-            url = 'https://www.vinatis.com/' + url
-        response = requests.get(url, timeout=5)
-        if response.status_code == 200:
-            return Image.open(BytesIO(response.content))
+def charger_image_vin(nom_fichier):
+    chemin_local = os.path.join('public', 'images', nom_fichier)
+    if os.path.exists(chemin_local):
+        return Image.open(chemin_local)
+    else:
+        chemin_defaut = os.path.join('public', 'images', 'default.png')
+        if os.path.exists(chemin_defaut):
+            return Image.open(chemin_defaut)
         else:
-            st.error(f"Erreur HTTP {response.status_code} pour l'URL: {url}")
             return None
-    except Exception as e:
-        st.error(f"Erreur lors du chargement de l'image: {str(e)}")
-        return None
 
 def afficher_infos_vin(vin, show_recommendations=False, df=None):
     if pd.notna(vin['visuel']) and vin['visuel'] != 'nan':
-        image = charger_image_depuis_url(vin['visuel'])
+        image = charger_image_vin(vin['visuel'])
         if image:
             st.image(image, width=300, caption=vin['nom'])
         else:
