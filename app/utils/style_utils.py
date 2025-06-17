@@ -191,5 +191,19 @@ def injecter_css():
         .stPlotlyChart {
             color: #333333 !important;
         }
+
+        /* Correction prioritaire pour le bouton principal en bas de page */
+        div[data-testid="stButton"] button {
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+            border: 2px solid var(--wine-red) !important;
+            font-size: 1.2em !important;
+            padding: 15px 30px !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        div[data-testid="stButton"] button:hover {
+            background-color: var(--wine-red) !important;
+            color: #FFFFFF !important;
+        }
     </style>
     """, unsafe_allow_html=True)
