@@ -27,14 +27,19 @@ def injecter_css():
         .stApp > footer {background-color: transparent;}
 
         /* Style de la sidebar */
-        .css-1d391kg {
+        section[data-testid="stSidebar"] {
             background-color: var(--wine-burgundy);
         }
-        .css-1d391kg .stRadio > div {
-            color: var(--wine-cream);
+        section[data-testid="stSidebar"] .stRadio > div {
+            color: var(--wine-cream) !important;
         }
-        .css-1d391kg .stRadio > div > div {
-            color: var(--wine-cream);
+        section[data-testid="stSidebar"] .stRadio > div > div {
+            color: var(--wine-cream) !important;
+        }
+        section[data-testid="stSidebar"] h1, 
+        section[data-testid="stSidebar"] h2, 
+        section[data-testid="stSidebar"] h3 {
+            color: var(--wine-cream) !important;
         }
 
         /* Style des titres */
@@ -96,17 +101,37 @@ def injecter_css():
 
         /* Style du texte dans les conteneurs */
         div[data-testid="stMarkdownContainer"] {
-            color: #333333;
+            color: #333333 !important;
         }
 
         /* Style des métriques */
         .stMetric {
-            color: #333333;
+            color: #333333 !important;
         }
 
         /* Style des conteneurs de texte */
         .stMarkdown {
-            color: #333333;
+            color: #333333 !important;
+        }
+
+        /* Style du texte dans les conteneurs de données */
+        .stDataFrame {
+            color: #333333 !important;
+        }
+
+        /* Style du texte dans les sélecteurs */
+        .stSelectbox, .stMultiselect {
+            color: #333333 !important;
+        }
+
+        /* Style du texte dans les sliders */
+        .stSlider {
+            color: #333333 !important;
+        }
+
+        /* Style du texte dans les conteneurs de graphiques */
+        .stPlotlyChart {
+            color: #333333 !important;
         }
     </style>
     """, unsafe_allow_html=True)
