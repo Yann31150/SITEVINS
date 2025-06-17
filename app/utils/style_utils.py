@@ -85,6 +85,38 @@ def injecter_css():
             border: 2px solid var(--wine-red) !important;
         }
 
+        /* Style des sélecteurs */
+        .stSelectbox > div > div {
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+        }
+        .stSelectbox > div > div > div {
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+        }
+        .stSelectbox > div > div > div > div {
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+        }
+
+        /* Style des multiselect */
+        .stMultiSelect > div > div {
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+        }
+        .stMultiSelect > div > div > div {
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+        }
+
+        /* Style des sliders */
+        .stSlider > div > div {
+            background-color: #FFFFFF !important;
+        }
+        .stSlider > div > div > div {
+            background-color: #FFFFFF !important;
+        }
+
         /* Style des conteneurs */
         .logo-container { 
             text-align: center; 
