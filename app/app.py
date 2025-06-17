@@ -62,6 +62,14 @@ if not os.path.exists(os.path.join(extract_path, "00001.png")):
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         zip_ref.extractall(extract_path)
 
+# Après l'extraction
+if os.path.exists(os.path.join(extract_path, "00001.png")):
+    st.success("L'image 00001.png a bien été extraite !")
+else:
+    st.error("L'image 00001.png n'a PAS été trouvée après extraction.")
+# Affiche la liste des 10 premiers fichiers extraits
+st.write("Fichiers extraits :", os.listdir(extract_path)[:10])
+
 def main():
     injecter_css()
     df = charger_donnees()
