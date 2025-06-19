@@ -67,10 +67,12 @@ SITEVINS/
 ├── data/
 │   ├── raw/
 │   │   ├── scrapping.ipynb
+│   │   ├── scrappingimages.ipynb
 │   │   └── vins_vinatis_150_pages.csv
 │   ├── process/
 │   │   ├── etape_1_pour_applatir.ipynb
 │   │   ├── etape_2_travail_sur_base.ipynb
+
 │   │   └── vins_vinatis_flat_complet.csv
 │   └── final/
 │       ├── etape_3_ML_sur_base_vin_av_poids.ipynb
@@ -79,7 +81,7 @@ SITEVINS/
 │       ├── base_vin_final_temps.csv
 │       ├── concept_fichier final.ipynb
 │       ├── URLimages.csv
-│       └── images/
+│       └── images/        # images de bouteilles (scrapping local)
 │           ├── 04439.png
 │           ├── 04438.png
 │           ├── ...
@@ -95,11 +97,14 @@ SITEVINS/
 
 1. **Scraping**
     - `data/raw/scrapping.ipynb` : collecte des données sur les vins (site Vinatis, etc.)
-2. **Préparation & nettoyage**
+2. **Scraping des images**
+    - `data/raw/scrappingimages.ipynb` : récupération automatique des images de bouteilles de vin à partir des URLs collectées lors du scraping principal. Les images sont téléchargées et stockées localement dans le dossier `data/final/images/`.
+    - Ces images sont ensuite utilisées par l'application web pour illustrer les résultats et recommandations, garantissant un affichage rapide et sans dépendance à des ressources externes.
+3. **Préparation & nettoyage**
     - `data/process/etape_1_pour_applatir.ipynb`, `etape_2_travail_sur_base.ipynb` : nettoyage, aplatissement, enrichissement
-3. **Machine Learning & enrichissement**
+4. **Machine Learning & enrichissement**
     - `data/final/etape_3_ML_sur_base_vin_av_poids.ipynb` : modélisation, scoring, génération de la base finale
-4. **Application web**
+5. **Application web**
     - Utilisation de `data/final/base_vin_final.csv` pour alimenter l'interface Streamlit
     - Les images sont recherchées uniquement en local dans `data/final/images/`
 
