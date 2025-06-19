@@ -28,14 +28,15 @@ Bienvenue sur **BouteillIA**, une application web de data science dédiée à la
 
 ## Fonctionnalités principales
 
-- **Accueil & KPI** :
+- **Accueil** :
   - Statistiques clés sur le marché du vin (bio, consommation, etc.)
   - Visualisations interactives : top pays producteurs de vin bio, répartition des couleurs, types de produits…
-- **Filtrage avancé** :
+- **Votre choix** :
   - Recherche multi-critères (nom, pays, couleur, prix, accords mets-vins, bio…)
   - Sélection dynamique des fourchettes de prix et des accords
 - **Résultats détaillés** :
   - Affichage des vins correspondant à la recherche, avec visuels, infos détaillées, badges bio
+  - Affichage des images locales uniquement (dossier `data/final/images/`)
   - Accès rapide aux recommandations personnalisées pour chaque vin
 - **Recommandation IA** :
   - Suggestions de vins similaires ou complémentaires, basées sur l'analyse des profils et des préférences
@@ -73,9 +74,16 @@ SITEVINS/
 │   │   └── vins_vinatis_flat_complet.csv
 │   └── final/
 │       ├── etape_3_ML_sur_base_vin_av_poids.ipynb
-│       └── base_vin_final.csv
-├── archive/
-│   └── ... (versions précédentes, scripts historiques)
+│       ├── consol_pourcsv.ipynb
+│       ├── base_vin_final.csv
+│       ├── base_vin_final_temps.csv
+│       ├── concept_fichier final.ipynb
+│       ├── URLimages.csv
+│       └── images/
+│           ├── 04439.png
+│           ├── 04438.png
+│           ├── ...
+│           └── 04340.png
 ├── requirement.txt
 ├── .gitignore
 └── README.md
@@ -93,6 +101,7 @@ SITEVINS/
     - `data/final/etape_3_ML_sur_base_vin_av_poids.ipynb` : modélisation, scoring, génération de la base finale
 4. **Application web**
     - Utilisation de `data/final/base_vin_final.csv` pour alimenter l'interface Streamlit
+    - Les images sont recherchées uniquement en local dans `data/final/images/`
 
 ---
 
@@ -126,7 +135,8 @@ Ouvrez votre navigateur à l'adresse indiquée (par défaut http://localhost:850
 - Pillow
 - jupyter
 - beautifulsoup4
-- matplotlib, seaborn (visualisation)
+- matplotlib
+- seaborn
 
 ---
 
